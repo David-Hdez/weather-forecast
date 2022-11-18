@@ -1,8 +1,33 @@
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
 import AsyncSelect from 'react-select/async';
 
-function Search() {
+function Search(props) {
+    const [city, setCity] = useState(null);
+
+    useEffect(
+        () => {
+            if (city !== null) {
+                const options = {
+                    method: 'GET',
+                    url: `https://spott.p.rapidapi.com/places/${city.value}`,
+                    headers: {
+                        'X-RapidAPI-Key': import.meta.env.VITE_X_RAPIDAPI_KEY,
+                        'X-RapidAPI-Host': 'spott.p.rapidapi.com'
+                    }
+                };
+
+                axios.request(options).then(function (response) {
+                    props.latLon(response.data.coordinates)
+                }).catch(function (error) {
+                    console.error(error);
+                });
+            }
+        },
+        [city],
+    );
+
     /**
      * Cities autocomplete
      * @param {string} inputValue 
@@ -44,7 +69,14 @@ function Search() {
 
     return (
         <>
-            <AsyncSelect cacheOptions defaultOptions loadOptions={loadOptions} />
+            <AsyncSelect
+                cacheOptions
+                defaultOptions
+                loadOptions={loadOptions}
+                onChange={setCity}
+                placeholder='Busca ciudad'
+                loadingMessage={() => 'Cargando...'}
+                noOptionsMessage={() => 'Sin resultados'} />
         </>
     );
 }
