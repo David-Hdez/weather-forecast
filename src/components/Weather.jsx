@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import axios from "axios";
+import './Weather.css'
 
 function Weather(props) {
     const [forecast, setForecast] = useState(null);
@@ -15,7 +16,8 @@ function Weather(props) {
                         appid: import.meta.env.VITE_APPID_OPENWEATHERMAP,
                         lat: props.localizacion.latitude,
                         lon: props.localizacion.longitude,
-                        units: 'metric'
+                        units: 'metric',
+                        lang: 'es'
                     }
                 };
 
@@ -32,8 +34,27 @@ function Weather(props) {
     return (
         <>
             {forecast
-                ? <Card><Card.Body>Seleccionada</Card.Body></Card>
-                : <Card><Card.Body>Selecciona una ciudad</Card.Body></Card>
+                ? <Card className="text-center">
+                    <Card.Img variant="top" src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`} alt="Weather icon" className='icon-weather mx-auto' />
+                    <Card.Body>
+                        <Card.Title>{forecast.name}</Card.Title>
+                        <Card.Text>
+                            {forecast.weather[0].description}
+                        </Card.Text>
+                    </Card.Body>
+                    <Card.Body>
+                        Temperatura actual: <strong>{forecast.main.temp}</strong>
+                    </Card.Body>
+                    <Card.Body>
+                        Mínima: <strong>{forecast.main.temp_min}</strong>
+                    </Card.Body>
+                    <Card.Body>
+                        Máxima: <strong>{forecast.main.temp_max}</strong>
+                    </Card.Body>
+                </Card>
+                : <Card>
+                    <Card.Body>Selecciona una ciudad</Card.Body>
+                </Card>
             }
         </>
     );
