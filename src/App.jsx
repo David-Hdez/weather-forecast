@@ -3,8 +3,7 @@ import reactLogo from './assets/react.svg'
 // import './App.css'
 import Container from 'react-bootstrap/Container';
 import Weather from './components/Weather'
-import Menu from './components/Menu'
-import Search from './components/Search'
+import Place from './components/Place'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
@@ -25,14 +24,14 @@ function App() {
           </Navbar>
         </Col>
       </Row>
-      <Row>
+      <Row className='mt-1'>
         <Col>
-          <Search latLon={handleCity}></Search>
+          <Place latLon={handleCity}></Place>
         </Col>
       </Row>
-      <Row>
+      <Row className='mt-3'>
         <Col>
-          <Weather></Weather>
+          <Weather localizacion={coordinates}></Weather>
         </Col>
       </Row>
     </Container>

@@ -3,7 +3,7 @@ import axios from "axios";
 
 import AsyncSelect from 'react-select/async';
 
-function Search(props) {
+function Place(props) {
     const [city, setCity] = useState(null);
 
     useEffect(
@@ -81,4 +81,4 @@ function Search(props) {
     );
 }
 
-export default Search;
+export default Place;
