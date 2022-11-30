@@ -34,7 +34,7 @@ function Weather(props) {
     return (
         <>
             {forecast
-                ? <Card className="text-center">
+                ? <Card className="text-center detail-forecast text-white">
                     <Card.Img variant="top" src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`} alt="Weather icon" className='icon-weather mx-auto' />
                     <Card.Body>
                         <Card.Title>{forecast.name}</Card.Title>
@@ -43,13 +43,13 @@ function Weather(props) {
                         </Card.Text>
                     </Card.Body>
                     <Card.Body>
-                        Temperatura actual: <strong>{forecast.main.temp}</strong>
+                        Temperatura actual: <strong>{forecast.main.temp}°C</strong>
                     </Card.Body>
                     <Card.Body>
-                        Mínima: <strong>{forecast.main.temp_min}</strong>
+                        Mínima: <strong>{forecast.main.temp_min}°C</strong>
                     </Card.Body>
                     <Card.Body>
-                        Máxima: <strong>{forecast.main.temp_max}</strong>
+                        Máxima: <strong>{forecast.main.temp_max}°C</strong>
                     </Card.Body>
                 </Card>
                 : <Card>
