@@ -24,7 +24,7 @@ function App() {
           </Navbar>
         </Col>
       </Row>
-      <Row className='mt-1'>
+      <Row className='mt-3'>
         <Col>
           <Place latLon={handleCity}></Place>
         </Col>

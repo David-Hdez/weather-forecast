@@ -70,6 +70,7 @@ function Place(props) {
     return (
         <>
             <AsyncSelect
+                isClearable
                 cacheOptions
                 defaultOptions
                 loadOptions={loadOptions}
