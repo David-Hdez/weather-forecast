@@ -29,11 +29,7 @@ function App() {
           <Place latLon={handleCity}></Place>
         </Col>
       </Row>
-      <Row className='mt-3'>
-        <Col>
-          <Weather localizacion={coordinates}></Weather>
-        </Col>
-      </Row>
+      <Weather localizacion={coordinates}></Weather>
     </Container>
   )
 }
