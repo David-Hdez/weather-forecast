@@ -13,7 +13,7 @@ function Weather(props) {
 
     useEffect(
         () => {
-            if (props.localizacion !== null) {
+            if (props.localization !== null) {
                 setLoading(true);
 
                 const options = {
@@ -21,8 +21,8 @@ function Weather(props) {
                     url: 'https://api.openweathermap.org/data/2.5/weather',
                     params: {
                         appid: import.meta.env.VITE_APPID_OPENWEATHERMAP,
-                        lat: props.localizacion.latitude,
-                        lon: props.localizacion.longitude,
+                        lat: props.localization.latitude,
+                        lon: props.localization.longitude,
                         units: 'metric',
                         lang: 'es'
                     }
@@ -36,7 +36,7 @@ function Weather(props) {
                 });
             }
         },
-        [props.localizacion],
+        [props.localization],
     );
 
     return (
@@ -53,7 +53,7 @@ function Weather(props) {
                 </Col>
             </Row>
 
-            {props.localizacion === null &&
+            {props.localization === null &&
                 <Row className='mt-3'>
                     <Col>
                         <Card>

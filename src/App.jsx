@@ -29,7 +29,7 @@ function App() {
           <Place latLon={handleCity}></Place>
         </Col>
       </Row>
-      <Weather localizacion={coordinates}></Weather>
+      <Weather localization={coordinates}></Weather>
     </Container>
   )
 }
